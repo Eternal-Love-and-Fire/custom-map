@@ -1,30 +1,25 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. **Display**
+   - Status: Done
+2. **User Click Map and Custom Icon**
+   - Status: Done
+   - Note: Implementation is not exactly like the example
+3. **Deletion of Single or All Markers**
+   - Status: Done
+   - Note: Press a button to activate delete mode for a single marker
+4. **Marker Clustering**
+   - Status: Needs Improvement
+   - Issue: Working example breaks after adding a marker, requires reload each time
 
-Currently, two official plugins are available:
+5. **Firebase Integration**
+   - Status: Done
+   - Note: Data is saved in the format of timestamp and location
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+6. **Published on GitHub Pages**
+   - Status: Done
+   - Note: Pinned in the repository's code page
 
-## Expanding the ESLint configuration
+## Notes
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- I have a rough idea of how to fix the clustering issue but lack the time to implement it.
+- Just kidding, I'm confident in my abilities but currently swamped with work(GOD help me) and courses at Binary Studio. I can't share project details, but I can ask them if you need more information.
