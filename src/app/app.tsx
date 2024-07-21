@@ -1,11 +1,10 @@
+import { useEffect, useState } from "react";
 import {
   APIProvider,
   Map,
-  MapCameraChangedEvent,
   MapMouseEvent,
 } from "@vis.gl/react-google-maps";
-import { PoiMarkers } from "../libs/components/components";
-import { Api_KEY_MAP_ID, API_KEY_MAPS } from "../env-example";
+
 import {
   addDoc,
   collection,
@@ -14,8 +13,10 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
+
+import { PoiMarkers } from "../libs/components/components";
+import { Api_KEY_MAP_ID, API_KEY_MAPS } from "../env-example";
 import { db } from "../libs/db/firebase";
-import { useEffect, useState } from "react";
 import { PoiType } from "../libs/types/poi-type";
 
 const App = () => {
@@ -51,6 +52,7 @@ const App = () => {
       try {
         const docRef = await addDoc(collection(db, "markers"), {
           location: newMarker.location,
+          timestamp: newMarker.timestamp
         });
         setMarkers((prevMarkers) => [
           ...prevMarkers,
@@ -61,6 +63,7 @@ const App = () => {
       }
     } else if (deleteMode) {
       const { latLng } = event.detail;
+
       const clickedMarker = markers.find(
         (marker) =>
           marker.location.lat === latLng?.lat &&
@@ -87,6 +90,7 @@ const App = () => {
       if (clickedMarker) {
         try {
           await deleteDoc(doc(db, "markers", clickedMarker.key));
+
           setMarkers((prevMarkers) =>
             prevMarkers.filter((marker) => marker.key !== clickedMarker.key)
           );
@@ -150,14 +154,6 @@ const App = () => {
           defaultCenter={{ lat: -33.860664, lng: 151.208138 }}
           mapId={Api_KEY_MAP_ID}
           onClick={handleMapOnClick}
-          onCameraChanged={(ev: MapCameraChangedEvent) =>
-            console.log(
-              "camera changed:",
-              ev.detail.center,
-              "zoom:",
-              ev.detail.zoom
-            )
-          }
         >
           <PoiMarkers
             pois={markers}
@@ -166,7 +162,7 @@ const App = () => {
           />
         </Map>
         <div className="sidebar">
-          <button className="sidebar__button" onClick={handleDeleteMode}>
+          <button className={`sidebar__button ${deleteMode ? "danger" : ""}`} onClick={handleDeleteMode}>
             Delete Mode
           </button>
           <button className="sidebar__button" onClick={handleDeleteAll}>

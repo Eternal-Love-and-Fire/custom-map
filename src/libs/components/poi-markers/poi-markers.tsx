@@ -1,5 +1,5 @@
 import { PoiType } from "../../types/poi-type";
-import { AdvancedMarker, Pin } from "@vis.gl/react-google-maps";
+import { AdvancedMarker, Pin} from "@vis.gl/react-google-maps";
 
 const PoiMarkers = ({
   pois,
@@ -10,7 +10,6 @@ const PoiMarkers = ({
   handleMarkerClick: (key: string) => void;
   onDragEnd: (id: string, newLocation: { lat: number; lng: number }) => void;
 }) => {
-  console.log(pois);
   return (
     <>
       {pois.map((poi: PoiType) => (
@@ -32,7 +31,6 @@ const PoiMarkers = ({
             glyphColor={"#000"}
             borderColor={"#000"}
           />
-          <div></div>
         </AdvancedMarker>
       ))}
     </>
